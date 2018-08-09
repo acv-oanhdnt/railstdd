@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: jientdongoc
+  password: ''
+
+development:
+  <<: *default
+  database: railstdd_development
+
+test:
+  <<: *default
+  database: railstdd_test
+
+
+production:
+  <<: *default
+  database: railstdd_production
+  username: railstdd
+  password: <%= ENV['RAILSTDD_DATABASE_PASSWORD'] %>
