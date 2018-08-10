@@ -19,5 +19,6 @@ class Product < ActiveRecord::Base
   def title_is_shorter_than_description
     if title.present? && description.present? && title.length > description.length
       errors.add(:title, 'Title must be shorter than description')
+    end
   end
 end

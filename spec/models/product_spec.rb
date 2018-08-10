@@ -15,9 +15,6 @@ RSpec.describe Product, type: :model do
         is_greater_than_or_equal_to(0)
     end
 
-    before(:each) do
-      @product = Product.create(title: 'RspecTest', description: '<p>this is description</p>', price: 12)
-    end
     it 'strip html from description' do
       expect(@product.description).to eq 'this is description'
     end
