@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
+
   before(:all) do
     @product = Product.create(title: 'RspecTest', description: '<p>this is description</p>', price: 12)
   end
 
   context "Validations" do
-    subject { @product }
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:price)}
@@ -27,9 +27,8 @@ RSpec.describe Product, type: :model do
     end
 
     it 'title is shorter than description' do
-      #should validate_length_of(:description).
-      #is_at_least(:title.length).
-      #with_message("title must be shorter than description")
+      @product.title = 'this is longer than <p>this is description</p>'
+      expect(@product.save).to eq false
     end
   end
 
