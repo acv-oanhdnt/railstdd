@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-
   before(:all) do
     @product = Product.create(title: 'RspecTest', description: '<p>this is description</p>', price: 12)
   end
@@ -26,6 +25,7 @@ RSpec.describe Product, type: :model do
     it 'title is shorter than description' do
       @product.title = 'this is longer than <p>this is description</p>'
       expect(@product.save).to eq false
+      #expect(@product.errors.full_messages).to include 'Title must be shorter than description!'
     end
   end
 
